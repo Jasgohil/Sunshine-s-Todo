@@ -6,7 +6,7 @@ dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 
-// Initialize the database (MongoDB or local db.json fallback) before starting the server
+// Initialize the local file-based database (db.json) before starting the server
 const startServer = async () => {
   try {
     await LocalDb.init();

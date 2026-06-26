@@ -8,8 +8,6 @@ import tasksRouter from './routes/tasks';
 import calendarRouter from './routes/calendar';
 import journalRouter from './routes/journal';
 import focusRouter from './routes/focus';
-import jazzyRouter from './routes/jazzy';
-import adminRouter from './routes/admin';
 import authRouter from './routes/auth';
 
 const app = express();
@@ -17,9 +15,16 @@ const app = express();
 // Security HTTP headers
 app.use(helmet());
 
-// Enable CORS for frontend development server
+// Enable CORS for frontend development server (supports dynamic ports on localhost)
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: (origin, callback) => {
+    const isLocalhost = !origin || origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:');
+    if (isLocalhost || origin === process.env.CLIENT_URL || origin === process.env.CLIENT_ORIGIN) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 
@@ -52,8 +57,6 @@ app.use('/api/tasks', tasksRouter);
 app.use('/api/events', calendarRouter);
 app.use('/api/journal', journalRouter);
 app.use('/api/focus', focusRouter);
-app.use('/api/jazzy', jazzyRouter);
-app.use('/api/admin', adminRouter);
 
 // Base / Healthcheck route
 app.get('/health', (req: Request, res: Response) => {

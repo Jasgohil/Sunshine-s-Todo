@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { MongoClient } from 'mongodb';
-import { Task, CalendarEvent, JournalEntry, FocusSession, JazzyNote, Poem, User } from '../types';
+import { Task, CalendarEvent, JournalEntry, FocusSession, User } from '../types';
 
 const DB_FILE = path.join(process.cwd(), 'db.json');
 
@@ -11,8 +11,6 @@ interface DatabaseSchema {
   events: CalendarEvent[];
   journal: JournalEntry[];
   focus: FocusSession[];
-  jazzyNotes: JazzyNote[];
-  poems: Poem[];
 }
 
 const getDefaultDb = (): DatabaseSchema => {
@@ -29,7 +27,7 @@ const getDefaultDb = (): DatabaseSchema => {
       'mock-admin-uid': {
         uid: 'mock-admin-uid',
         displayName: 'Sunshine Admin',
-        email: 'admin@sunshine.com',
+        email: 'ishika@sunshine.com',
         photoURL: 'https://api.dicebear.com/7.x/bottts/svg?seed=Admin',
         isAdmin: true,
       },
@@ -126,39 +124,7 @@ const getDefaultDb = (): DatabaseSchema => {
         updatedAt: new Date(Date.now() - 3600000 * 4).toISOString(),
       }
     ],
-    focus: [],
-    jazzyNotes: [
-      {
-        id: 'note-1',
-        content: "Hey there! Just wanted to send you a little reminder to stay hydrated, stretch your back, and take a 5-minute breather. You are doing so well, and I hope your day is filled with little moments of joy. Always cheering for you!\n\nWith love,\nJazzy ❤️",
-        scheduledDate: todayStr,
-        isPublished: true,
-        createdAt: new Date().toISOString(),
-      },
-      {
-        id: 'note-2',
-        content: "Hello Sunshine! As you start your tasks today, remember that perfection is a myth. Just do your best, leave room for mistakes, and celebrate the tiny victories. I hope this note puts a little smile on your face!\n\nThinking of you,\nJazzy ❤️",
-        scheduledDate: tomorrowStr,
-        isPublished: true,
-        createdAt: new Date().toISOString(),
-      },
-      {
-        id: 'note-3',
-        content: "Hey! You made it through yesterday, and that is something to be proud of. Whatever happens today, take it easy and remember to always leave room for a little sunshine in your soul.\n\nWarm hugs,\nJazzy ❤️",
-        scheduledDate: yesterdayStr,
-        isPublished: true,
-        createdAt: new Date().toISOString(),
-      }
-    ],
-    poems: [
-      {
-        id: 'poem-1',
-        title: 'Hope is the thing with feathers',
-        content: 'Hope is the thing with feathers\nThat perches in the soul,\nAnd sings the tune without the words,\nAnd never stops at all,\n\nAnd sweetest in the gale is heard;\nAnd sore must be the storm\nThat could abash the little bird\nThat kept so many warm.',
-        author: 'Emily Dickinson',
-        createdAt: new Date().toISOString(),
-      }
-    ]
+    focus: []
   };
 };
 
@@ -211,7 +177,7 @@ export class LocalDb {
         console.error('❌ Failed to connect to MongoDB. Falling back to local db.json:', err);
       }
     } else {
-      console.log('ℹ️ MONGODB_URI not set. Operating in offline/local file mode.');
+      console.log('ℹ️ MONGODB_URI not set. Operating in offline/local file mode (db.json).');
     }
 
     // Fallback to local db.json

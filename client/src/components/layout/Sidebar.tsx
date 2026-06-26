@@ -9,7 +9,6 @@ import {
   History,
   Timer,
   BookOpen,
-  Heart,
   User,
   ShieldCheck,
   LogOut,
@@ -34,7 +33,6 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, setCollapsed }) => {
     { path: '/timeline', label: 'Timeline', icon: History },
     { path: '/pomodoro', label: 'Pomodoro', icon: Timer },
     { path: '/journal', label: 'Journal', icon: BookOpen },
-    { path: '/jazzy', label: "Jazzy's Corner", icon: Heart },
   ];
 
   const handleLogout = async () => {
@@ -117,38 +115,6 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, setCollapsed }) => {
           </NavLink>
         ))}
 
-        {/* Admin Dashboard Link (if admin) */}
-        {isAdmin && (
-          <NavLink
-            to="/admin"
-            className={({ isActive }) =>
-              `flex items-center gap-4 px-3 py-3 rounded-xl transition-all duration-200 group relative ${
-                isActive
-                  ? 'bg-gradient-to-r from-red-500/10 to-orange-500/5 border-l-4 border-red-500 text-red-500 font-medium'
-                  : 'text-sunshine-textNearWhite hover:bg-card hover:text-red-400 border-l-4 border-transparent'
-              }`
-            }
-          >
-            <ShieldCheck size={20} className="min-w-[20px] group-hover:scale-110 transition-transform duration-200 text-red-400 group-hover:text-red-500" />
-            <AnimatePresence>
-              {!collapsed && (
-                <motion.span
-                  initial={{ opacity: 0, width: 0 }}
-                  animate={{ opacity: 1, width: 'auto' }}
-                  exit={{ opacity: 0, width: 0 }}
-                  className="whitespace-nowrap font-medium text-sm"
-                >
-                  Admin Panel
-                </motion.span>
-              )}
-            </AnimatePresence>
-            {collapsed && (
-              <div className="absolute left-16 scale-0 rounded bg-card border border-border px-2 py-1 text-xs font-semibold text-red-400 shadow-md group-hover:scale-100 transition-all duration-100 origin-left z-50 whitespace-nowrap">
-                Admin Panel
-              </div>
-            )}
-          </NavLink>
-        )}
       </nav>
 
       {/* User profile & Settings at Bottom */}

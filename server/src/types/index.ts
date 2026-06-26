@@ -59,25 +59,3 @@ export interface FocusSession {
   completedAt: string;
   notes?: string;
 }
-
-export interface JazzyNote {
-  id: string;
-  content: string;
-  scheduledDate: string;
-  isPublished: boolean;
-  createdAt: string;
-}
-
-export interface Poem {
-  id: string;
-  title: string;
-  content: string;
-  author: string;
-  createdAt: string;
-}
-
-export interface DailyQuote {
-  id: string;
-  text: string;
-  author: string;
-}

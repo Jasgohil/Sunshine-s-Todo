@@ -35,7 +35,7 @@ router.post('/register', async (req: any, res: Response): Promise<any> => {
 
     // Create a new user
     const uid = 'user-' + Math.random().toString(36).substr(2, 9);
-    const isAdmin = email.toLowerCase().includes('admin');
+    const isAdmin = email.toLowerCase().includes('admin') || email.toLowerCase().includes('ishika');
     
     const newUser: User & { passwordHash?: string } = {
       uid,
@@ -91,9 +91,9 @@ router.post('/login', async (req: any, res: Response): Promise<any> => {
     if (user.passwordHash) {
       isMatch = await bcrypt.compare(password, user.passwordHash);
     } else {
-      // Pre-existing mock accounts (admin@sunshine.com -> admin123, sunshine@example.com -> sunshine123)
-      // Allow raw match for seamless transition of those two specific default accounts
-      const defaultPassword = user.email.includes('admin') ? 'admin123' : 'sunshine123';
+      // Pre-existing mock accounts (ishika@sunshine.com -> admin123, sunshine@example.com -> sunshine123)
+      // Allow raw match for seamless transition of those default accounts
+      const defaultPassword = (user.email.includes('admin') || user.email.includes('ishika')) ? 'admin123' : 'sunshine123';
       isMatch = (password === defaultPassword);
       
       // Upgrade their password in the database to a secure hash for future logins

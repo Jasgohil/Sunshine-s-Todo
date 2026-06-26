@@ -15,9 +15,7 @@ import EventTimelinePage from '../pages/EventTimelinePage';
 import FocusModePage from '../pages/FocusModePage';
 import PomodoroPage from '../pages/PomodoroPage';
 import JournalPage from '../pages/JournalPage';
-import JazzyPage from '../pages/JazzyPage';
 import ProfilePage from '../pages/ProfilePage';
-import AdminDashboardPage from '../pages/admin/AdminDashboardPage';
 
 // Import Layout
 import AppLayout from '../components/layout/AppLayout';
@@ -26,12 +24,6 @@ import AppLayout from '../components/layout/AppLayout';
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated } = useAuth();
   return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
-};
-
-const AdminRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { isAuthenticated, isAdmin } = useAuth();
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
-  return isAdmin ? <>{children}</> : <Navigate to="/" replace />;
 };
 
 const AppRoutes: React.FC = () => {
@@ -59,18 +51,7 @@ const AppRoutes: React.FC = () => {
         <Route path="focus" element={<FocusModePage />} />
         <Route path="pomodoro" element={<PomodoroPage />} />
         <Route path="journal" element={<JournalPage />} />
-        <Route path="jazzy" element={<JazzyPage />} />
         <Route path="profile" element={<ProfilePage />} />
-        
-        {/* Admin Route inside AppLayout */}
-        <Route
-          path="admin"
-          element={
-            <AdminRoute>
-              <AdminDashboardPage />
-            </AdminRoute>
-          }
-        />
       </Route>
 
       {/* Fallback */}

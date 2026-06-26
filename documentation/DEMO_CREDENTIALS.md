@@ -2,7 +2,7 @@
 
 This document contains the login credentials and instructions for logging in to the **Sunshine's Todo** productivity workspace.
 
-The application is connected to a live **Firebase Authentication** cloud service. User registration has been disabled from the user interface for security, and accounts are pre-registered directly in the database.
+The application is connected to a local database storage (`db.json`) using custom JWT authentication. Both pre-created accounts and new registrations are supported and saved directly to the database file.
 
 ---
 
@@ -11,11 +11,11 @@ The application is connected to a live **Firebase Authentication** cloud service
 You can log in using either of the following pre-created cloud accounts:
 
 ### 1. Administrator Account (Full Access)
-Use this account to access the main productivity suite and the **Admin Dashboard** (where you can schedule daily messages, add poems, and manage the content archive).
+Use this account to access the main productivity suite with administrative permissions.
 
-*   **Email Address:** `admin@sunshine.com`
+*   **Email Address:** `ishika@sunshine.com`
 *   **Password:** `admin123`
-*   **Permissions:** Full access to all screens, including the **Admin Panel** (`/admin`).
+*   **Permissions:** Full administrative permissions.
 
 ### 2. Regular User Account
 Use this account to experience the standard productivity workspace (Dashboard, To-Do lists, Calendar grids, focus mode, and private journals).

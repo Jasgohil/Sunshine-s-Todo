@@ -19,7 +19,6 @@ const Topbar: React.FC = () => {
     if (path === '/timeline') return 'Event Timeline';
     if (path === '/pomodoro') return 'Focus & Pomodoro';
     if (path === '/journal') return 'My Private Journal';
-    if (path === '/jazzy') return "Jazzy's Inspiration";
     if (path === '/profile') return 'Profile Settings';
     if (path === '/admin') return 'Admin Portal';
     return 'Sunshine';
@@ -121,16 +120,7 @@ const Topbar: React.FC = () => {
                   Settings
                 </Link>
 
-                {user?.isAdmin && (
-                  <Link
-                    to="/admin"
-                    onClick={() => setDropdownOpen(false)}
-                    className="flex items-center gap-3 px-4 py-2 text-xs text-red-400 hover:bg-red-500/10 hover:text-red-500 transition-colors duration-150 border-t border-border"
-                  >
-                    <ShieldAlert size={14} className="text-red-400" />
-                    Admin Panel
-                  </Link>
-                )}
+
 
                 <button
                   onClick={() => {
