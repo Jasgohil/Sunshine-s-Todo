@@ -9,6 +9,7 @@ import {
   History,
   Timer,
   BookOpen,
+  Heart,
   User,
   ShieldCheck,
   LogOut,
@@ -33,6 +34,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, setCollapsed }) => {
     { path: '/timeline', label: 'Timeline', icon: History },
     { path: '/pomodoro', label: 'Pomodoro', icon: Timer },
     { path: '/journal', label: 'Journal', icon: BookOpen },
+    { path: '/jazzy', label: "Jazzy's Corner", icon: Heart },
   ];
 
   const handleLogout = async () => {

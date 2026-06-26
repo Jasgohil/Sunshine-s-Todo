@@ -8,6 +8,7 @@ import tasksRouter from './routes/tasks';
 import calendarRouter from './routes/calendar';
 import journalRouter from './routes/journal';
 import focusRouter from './routes/focus';
+import jazzyRouter from './routes/jazzy';
 import authRouter from './routes/auth';
 
 const app = express();
@@ -57,6 +58,7 @@ app.use('/api/tasks', tasksRouter);
 app.use('/api/events', calendarRouter);
 app.use('/api/journal', journalRouter);
 app.use('/api/focus', focusRouter);
+app.use('/api/jazzy', jazzyRouter);
 
 // Base / Healthcheck route
 app.get('/health', (req: Request, res: Response) => {

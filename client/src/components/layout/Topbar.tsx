@@ -19,6 +19,7 @@ const Topbar: React.FC = () => {
     if (path === '/timeline') return 'Event Timeline';
     if (path === '/pomodoro') return 'Focus & Pomodoro';
     if (path === '/journal') return 'My Private Journal';
+    if (path === '/jazzy') return "Jazzy's Inspiration";
     if (path === '/profile') return 'Profile Settings';
     if (path === '/admin') return 'Admin Portal';
     return 'Sunshine';

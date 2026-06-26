@@ -15,6 +15,7 @@ import EventTimelinePage from '../pages/EventTimelinePage';
 import FocusModePage from '../pages/FocusModePage';
 import PomodoroPage from '../pages/PomodoroPage';
 import JournalPage from '../pages/JournalPage';
+import JazzyPage from '../pages/JazzyPage';
 import ProfilePage from '../pages/ProfilePage';
 
 // Import Layout
@@ -51,6 +52,7 @@ const AppRoutes: React.FC = () => {
         <Route path="focus" element={<FocusModePage />} />
         <Route path="pomodoro" element={<PomodoroPage />} />
         <Route path="journal" element={<JournalPage />} />
+        <Route path="jazzy" element={<JazzyPage />} />
         <Route path="profile" element={<ProfilePage />} />
       </Route>
 
