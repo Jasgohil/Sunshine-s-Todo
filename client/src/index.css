@@ -1,0 +1,50 @@
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #0D0D0D;
+    --foreground: #F0F0F0;
+    --card: #1A1A1A;
+    --card-foreground: #F0F0F0;
+    --popover: #1a1a1a;
+    --popover-foreground: #F0F0F0;
+    --primary: #F5C518;
+    --primary-foreground: #0D0D0D;
+    --secondary: #FF8C42;
+    --secondary-foreground: #0D0D0D;
+    --muted: #262626;
+    --muted-foreground: #6B6B6B;
+    --accent: #262626;
+    --accent-foreground: #F5C518;
+    --destructive: #EF4444;
+    --destructive-foreground: #F0F0F0;
+    --border: #262626;
+    --input: #262626;
+    --ring: #F5C518;
+    --radius: 0.75rem;
+    --font-sans: 'Geist Variable', 'Inter', sans-serif;
+    
+    --sidebar: #121212;
+    --sidebar-foreground: #F0F0F0;
+    --sidebar-primary: #F5C518;
+    --sidebar-primary-foreground: #0D0D0D;
+    --sidebar-accent: #1A1A1A;
+    --sidebar-accent-foreground: #F5C518;
+    --sidebar-border: #262626;
+    --sidebar-ring: #F5C518;
+  }
+}
+
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  font-family: var(--font-sans);
+}
