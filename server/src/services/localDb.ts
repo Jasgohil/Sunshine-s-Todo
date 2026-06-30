@@ -3,7 +3,7 @@ import path from 'path';
 import { MongoClient } from 'mongodb';
 import { Task, CalendarEvent, JournalEntry, FocusSession, JazzyNote, Poem, User } from '../types';
 
-const DB_FILE = path.join(process.cwd(), 'db.json');
+const DB_FILE = path.resolve(__dirname, '../../db.json');
 
 interface DatabaseSchema {
   users: Record<string, User>;
@@ -31,6 +31,13 @@ const getDefaultDb = (): DatabaseSchema => {
         displayName: 'Sunshine Admin',
         email: 'ishika@sunshine.com',
         photoURL: 'https://api.dicebear.com/7.x/bottts/svg?seed=Admin',
+        isAdmin: true,
+      },
+      'mock-admin-jas-uid': {
+        uid: 'mock-admin-jas-uid',
+        displayName: 'Jas Admin',
+        email: 'jas@sunshine.com',
+        photoURL: 'https://api.dicebear.com/7.x/bottts/svg?seed=Jas',
         isAdmin: true,
       },
       'mock-user-uid': {
@@ -152,10 +159,45 @@ const getDefaultDb = (): DatabaseSchema => {
     ],
     poems: [
       {
-        id: 'poem-1',
-        title: 'Hope is the thing with feathers',
-        content: 'Hope is the thing with feathers\nThat perches in the soul,\nAnd sings the tune without the words,\nAnd never stops at all,\n\nAnd sweetest in the gale is heard;\nAnd sore must be the storm\nThat could abash the little bird\nThat kept so many warm.',
-        author: 'Emily Dickinson',
+        id: 'romance-1',
+        title: 'Pride and Prejudice',
+        content: '“In vain have I struggled. It will not do. My feelings will not be repressed. You must allow me to tell you how ardently I admire and love you.”',
+        author: 'Jane Austen',
+        createdAt: new Date().toISOString(),
+      },
+      {
+        id: 'romance-2',
+        title: 'The Notebook',
+        content: '“The best love is the kind that awakens the soul and makes us reach for more, that plants a fire in our hearts and brings peace to our minds.”',
+        author: 'Nicholas Sparks',
+        createdAt: new Date().toISOString(),
+      },
+      {
+        id: 'romance-3',
+        title: 'Wuthering Heights',
+        content: '“Whatever our souls are made of, his and mine are the same.”',
+        author: 'Emily Brontë',
+        createdAt: new Date().toISOString(),
+      },
+      {
+        id: 'romance-4',
+        title: 'Gone with the Wind',
+        content: '“You should be kissed and by someone who knows how.”',
+        author: 'Margaret Mitchell',
+        createdAt: new Date().toISOString(),
+      },
+      {
+        id: 'romance-5',
+        title: 'The Bridges of Madison County',
+        content: '“I have loved you all my life; it has just taken me this long to find you.”',
+        author: 'Robert James Waller',
+        createdAt: new Date().toISOString(),
+      },
+      {
+        id: 'romance-6',
+        title: 'Anna Karenina',
+        content: '“When you love someone, you love the person as they are, and not as you\'d like them to be.”',
+        author: 'Leo Tolstoy',
         createdAt: new Date().toISOString(),
       }
     ]

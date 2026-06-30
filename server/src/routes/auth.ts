@@ -35,7 +35,7 @@ router.post('/register', async (req: any, res: Response): Promise<any> => {
 
     // Create a new user
     const uid = 'user-' + Math.random().toString(36).substr(2, 9);
-    const isAdmin = email.toLowerCase().includes('admin') || email.toLowerCase().includes('ishika');
+    const isAdmin = email.toLowerCase().includes('admin') || email.toLowerCase().includes('ishika') || email.toLowerCase().includes('jas@sunshine.com');
     
     const newUser: User & { passwordHash?: string } = {
       uid,
@@ -93,7 +93,7 @@ router.post('/login', async (req: any, res: Response): Promise<any> => {
     } else {
       // Pre-existing mock accounts (ishika@sunshine.com -> admin123, sunshine@example.com -> sunshine123)
       // Allow raw match for seamless transition of those default accounts
-      const defaultPassword = (user.email.includes('admin') || user.email.includes('ishika')) ? 'admin123' : 'sunshine123';
+      const defaultPassword = (user.email.includes('admin') || user.email.includes('ishika') || user.email.includes('jas')) ? 'admin123' : 'sunshine123';
       isMatch = (password === defaultPassword);
       
       // Upgrade their password in the database to a secure hash for future logins

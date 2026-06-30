@@ -30,4 +30,16 @@ api.interceptors.request.use(
   }
 );
 
+// Response interceptor to handle authorization errors (e.g., database resets or expired tokens)
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      localStorage.removeItem('sunshine_user');
+      window.location.href = '/login';
+    }
+    return Promise.reject(error);
+  }
+);
+
 export default api;
